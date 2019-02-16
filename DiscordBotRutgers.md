@@ -51,13 +51,8 @@ The Current API is broken on 3.7 on PyPi which is the pip repo. First make sure 
 if it is not run:
 *python3 -m venv .
 *source bin/activate
-To fixL
-run 
-*git clone https://github.com/Rapptz/discord.py
-*git checkout async
-*cd discord.py (the cloned folder)
-*pip install .
-* cd lib/python3.7/site-packages
-* rm -rf discord (on windows you can use the UI to do the same)
-* mv(rename) discord.py-0.16.12-py3.7.egg-info discord
+run
+*pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip\#egg\=discord.py\[voice\]*
+Keep in mind 3.7 still has bugs so if possible downgrade th 3.6, but given this, the example in https://github.com/Rapptz/discord.py should work
+
  
