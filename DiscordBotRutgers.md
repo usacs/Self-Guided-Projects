@@ -60,4 +60,16 @@ run
 
 Keep in mind 3.7 still has bugs so if possible downgrade th 3.6, but given this, the example in https://github.com/Rapptz/discord.py should work
 
+##Getting Started with APIs
+#What Are Apis?
+APIS (Application Programming Interfaces) are services that companies can allow developers to safely interact with their data without giving direct access to their databases as well as interact with those companies technologies.
+Some examples:
+The Clarifai API allows us to perform computer vision on pictures (Interacting with a technology this company provides)
+
+The Rutgers API Allows us to interact with Data rutgers has such as food and bus timings
+
+Most APIs Use JSON(Javascript Object Noatation to communciate responses to the user)
+
+Understanding JSON:
+
  
