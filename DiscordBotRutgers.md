@@ -51,7 +51,9 @@ The Current API is broken on 3.7 on PyPi which is the pip repo. First make sure 
 if it is not run:
 
 *python3 -m venv .
+
 *source bin/activate
+
 run
 
 *pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip\#egg\=discord.py\[voice\]
