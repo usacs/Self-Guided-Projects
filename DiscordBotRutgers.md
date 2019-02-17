@@ -92,4 +92,17 @@ So example["apple"] gives us the value "pear", where "apple" is the key and "pea
 
 ### Check Your Understadning
 What does example["other"] give, how do I access the value "b" or "d"?
+
+### JSON Arrays
+Sometimes we can also have arrays of JSON objects which we can access by iterating through the array.
+
+### GET vs POST
+Now that you have an understanding if JSON we move into interacting with APIs. There are 5 main HTTP methods, in which we will talk about two
+
+#### HTTP GET:
+GET is used to request data from a specified resource.
+
+#### HTTP POST:
+POST is Used to Create/Update a resource (logging in)
+
  
