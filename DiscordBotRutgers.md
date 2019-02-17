@@ -111,6 +111,308 @@ pip install requests
 #or
 python3 -m pip install requests #if not using a virtual env
 ```
-
+### Making Our First Requests:
+Let's first look at the Rutgers Dining API
+```json
+[
+  {
+    "location_name": "Brower Commons",
+    "date": 1550434349891,
+    "meals": [
+      {
+        "meal_name": "Breakfast",
+        "meal_avail": false
+      },
+      {
+        "meal_name": "Lunch",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Breakfast Meats",
+            "items": [
+              "Grilled Turkey Sausage Links",
+              "Pork Sausage Links",
+              "Vegetarian Breakfast Patties"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Entrees",
+            "items": [
+              "Apple Pancake",
+              "Oatmeal",
+              "Red Velvet Waffle",
+              "Scramble Cholesterol Free Egg",
+              "Scrambled Eggs",
+              "Vegan Grits Hot Cereal"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Bakery",
+            "items": [
+              "Assorted Bagels",
+              "Assorted Contract Muffins",
+              "Plain Bagels"
+            ]
+          },
+          {
+            "genre_name": "Salad Bar",
+            "items": [
+              "Grilled Chicken Breast 4Oz"
+            ]
+          },
+          {
+            "genre_name": "Soups",
+            "items": [
+              "Rsted Eggplan & Red Pepp Soup"
+            ]
+          },
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "4\" Club Roll",
+              "Belgian Waffles",
+              "Breaded Chicken Patty",
+              "Noodle Lungo"
+            ]
+          },
+          {
+            "genre_name": "Starch & Potatoes",
+            "items": [
+              "Spicy Diced Potatoes"
+            ]
+          },
+          {
+            "genre_name": "Accompaniments",
+            "items": [
+              "Chopped Red & Green Peppers",
+              "Sausage Crumbles",
+              "Shredded Cheddar Cheese",
+              "Shredded Mozzarella Cheese",
+              "Sliced Bacon",
+              "Sliced Mushrooms",
+              "Small Diced Ham"
+            ]
+          },
+          {
+            "genre_name": "Cook To Order Bar",
+            "items": [
+              "Diced Tomatoes",
+              "Diced Onions",
+              "Egg Mix Liquid And Whole",
+              "Liquid Egg Cholesterol Free",
+              "Omelets Made To Order",
+              "Shred Monterey Jack Cheese"
+            ]
+          },
+          {
+            "genre_name": "Pizza/ Pasta",
+            "items": [
+              "Garlic Bread Sticks",
+              "Hawaiian Chicken Pizza",
+              "Pepperoni Cheese Pizza Thin",
+              "Round Cheese Pizza Large",
+              "Shrimp And Pesto Pizza"
+            ]
+          }
+        ]
+      },
+      {
+        "meal_name": "Dinner",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "Garlic Roasted Rosemary Chicken",
+              "Jambalaya",
+              "Roast Beef",
+              "Shrimp W/ Tequilla Lime Sauce",
+              "Whole Wheat Penne"
+            ]
+          },
+          {
+            "genre_name": "Sauces & Gravies",
+            "items": [
+              "Plain Tomato Sauce",
+              "Roasted Onion Port Au Jus"
+            ]
+          },
+          {
+            "genre_name": "Starch & Potatoes",
+            "items": [
+              "Roasted Red Bliss Potato W/ Crumbled Blue Cheese"
+            ]
+          },
+          {
+            "genre_name": "Veggies",
+            "items": [
+              "Collard Greens",
+              "Vegan Spaghetti Squash Roasted"
+            ]
+          },
+          {
+            "genre_name": "Desserts",
+            "items": [
+              "Ny Cheesecake"
+            ]
+          },
+          {
+            "genre_name": "Bakery Misc",
+            "items": [
+              "Cranberry Rasin Loaf"
+            ]
+          },
+          {
+            "genre_name": "Cook To Order Bar",
+            "items": [
+              "Asian Brown Sauce",
+              "Baked Brown Rice",
+              "Beef Strips For Stir Fry",
+              "Diced Tofu",
+              "Fresh Chicken Strips Raw",
+              "Kung Pao Sauce",
+              "Large Broken Pdi Shrimp",
+              "Lo Mein",
+              "Oyster Sauce",
+              "Pasta Vegetable Side",
+              "Soy Bragg",
+              "Steamed White Rice",
+              "Szechuan Sauce"
+            ]
+          }
+        ]
+      },
+      {
+        "meal_name": "Knight Room",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "Chicken Parmesan",
+              "Eggplant Rollatini",
+              "Grilled Chicken Breast 3Oz"
+            ]
+          },
+          {
+            "genre_name": "Knight Room",
+            "items": [
+              "Cucumbers",
+              "Italian Dinner Roll",
+              "Tomato Wedges",
+              "Tossed Salad"
+            ]
+          }
+        ]
+      },
+      {
+        "meal_name": "Late Knight",
+        "meal_avail": false
+      }
+    ]
+  },
+  {
+    "location_name": "Busch Dining Hall",
+    "date": 1550434349891,
+    "meals": [
+      {
+        "meal_name": "Breakfast",
+        "meal_avail": false
+      },
+      {
+        "meal_name": "Lunch",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Breakfast Meats",
+            "items": [
+              "Grilled Turkey Sausage Links",
+              "Sliced Bacon",
+              "Vegetarian Breakfast Patties"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Entrees",
+            "items": [
+              "Apple Pancake",
+              "Aspar & Sundriedtomato Quiche",
+              "Belgian Waffles",
+              "Hard Boiled Eggs",
+              "Oatmeal",
+              "Scrambled Eggs",
+              "Vegan Grits Hot Cereal"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Bakery",
+            "items": [
+              "Assorted Contract Muffins",
+              "Bagel Weekend Assortment"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Misc",
+            "items": [
+              "Grapefruit Halves Red",
+              "Green Seedless Grapes",
+              "Honeydew Melon",
+              "Strawberries"
+            ]
+          },
+          {
+            "genre_name": "Salad Bar",
+            "items": [
+              "Baby Spinach",
+              "Broccoli Buds Op",
+              "Cucumbers",
+              "Diced Tofu",
+              "Ginger Marinated Vegetables",
+              "Health Salad",
+              "Salad Mesculen Greens",
+              "Sweet Wheat Berry",
+              "Thyme And Lemon Olives",
+              "Tomato Wedges"
+            ]
+          },
+          {
+            "genre_name": "Soups",
+            "items": [
+              "Vegan Navy Bean Soup"
+            ]
+          },
+          {
+            "genre_name": "Deli Bar Entree",
+            "items": [
+              "Deli Meat",
+              "German Potato Salad",
+              "Grilled Chicken Montreal Seasoning Busch",
+              "Ham Salad",
+              "Scg Crunchy Slaw"
+            ]
+          },
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "Hamburger Quarter Pounder",
+              "Tortilla Crusted Tilapia"
+            ]
+          },
+          {
+            "genre_name": "Starch & Potatoes",
+            "items": [
+              "Spicy Diced Potatoes",
+              "Steamed White Rice"
+            ]
+          },
+          {
+            "genre_name": "Veggies",
+            "items": [
+              "Sweet White Corn"
+            ]
+          },
+]
+...
+]
+```
 
  
