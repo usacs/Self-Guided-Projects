@@ -417,6 +417,224 @@ Below is an example snippet of the response on Sunday Feb 17 2019
 
 ```
 
-We see that the data is formatted in an odd way, we have a JSON array and each object represents and dining hall. 
+We see that the data is formatted in an odd way, we have a JSON array and each object represents and dining hall.  This JSON is harder to decode and read so take your time to understand it.
+Before looking at the answer to the below questions think about the soln yourself
+
+#### How do we know if are in the Brower's object ?
+
+Well we see that there is a top level key called "location_name", and we discussed previously the response was a json array.
+So to get the json object for brower
+
+```python
+import requests
+r = requests.get("https://rumobile.rutgers.edu/1/rutgers-dining.txt") # WHY a GET request?
+resp = r.json()
+for i in resp:
+    if i["location_name"] == "Brower Commons":
+       #do stuff with that object
+```
+We First make the request to the endpoint and store the json array in the resp object.
+Then, we iterate through the json array and check the top level key "location_name" for our desired location. Now given an object (say the brower object) how do we access the meals ( The brower object is posted below for conveneince)
+
+```json
+  {
+    "location_name": "Brower Commons",
+    "date": 1550434349891,
+    "meals": [
+      {
+        "meal_name": "Breakfast",
+        "meal_avail": false
+      },
+      {
+        "meal_name": "Lunch",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Breakfast Meats",
+            "items": [
+              "Grilled Turkey Sausage Links",
+              "Pork Sausage Links",
+              "Vegetarian Breakfast Patties"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Entrees",
+            "items": [
+              "Apple Pancake",
+              "Oatmeal",
+              "Red Velvet Waffle",
+              "Scramble Cholesterol Free Egg",
+              "Scrambled Eggs",
+              "Vegan Grits Hot Cereal"
+            ]
+          },
+          {
+            "genre_name": "Breakfast Bakery",
+            "items": [
+              "Assorted Bagels",
+              "Assorted Contract Muffins",
+              "Plain Bagels"
+            ]
+          },
+          {
+            "genre_name": "Salad Bar",
+            "items": [
+              "Grilled Chicken Breast 4Oz"
+            ]
+          },
+          {
+            "genre_name": "Soups",
+            "items": [
+              "Rsted Eggplan & Red Pepp Soup"
+            ]
+          },
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "4\" Club Roll",
+              "Belgian Waffles",
+              "Breaded Chicken Patty",
+              "Noodle Lungo"
+            ]
+          },
+          {
+            "genre_name": "Starch & Potatoes",
+            "items": [
+              "Spicy Diced Potatoes"
+            ]
+          },
+          {
+            "genre_name": "Accompaniments",
+            "items": [
+              "Chopped Red & Green Peppers",
+              "Sausage Crumbles",
+              "Shredded Cheddar Cheese",
+              "Shredded Mozzarella Cheese",
+              "Sliced Bacon",
+              "Sliced Mushrooms",
+              "Small Diced Ham"
+            ]
+          },
+          {
+            "genre_name": "Cook To Order Bar",
+            "items": [
+              "Diced Tomatoes",
+              "Diced Onions",
+              "Egg Mix Liquid And Whole",
+              "Liquid Egg Cholesterol Free",
+              "Omelets Made To Order",
+              "Shred Monterey Jack Cheese"
+            ]
+          },
+          {
+            "genre_name": "Pizza/ Pasta",
+            "items": [
+              "Garlic Bread Sticks",
+              "Hawaiian Chicken Pizza",
+              "Pepperoni Cheese Pizza Thin",
+              "Round Cheese Pizza Large",
+              "Shrimp And Pesto Pizza"
+            ]
+          }
+        ]
+      },
+      {
+        "meal_name": "Dinner",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "Garlic Roasted Rosemary Chicken",
+              "Jambalaya",
+              "Roast Beef",
+              "Shrimp W/ Tequilla Lime Sauce",
+              "Whole Wheat Penne"
+            ]
+          },
+          {
+            "genre_name": "Sauces & Gravies",
+            "items": [
+              "Plain Tomato Sauce",
+              "Roasted Onion Port Au Jus"
+            ]
+          },
+          {
+            "genre_name": "Starch & Potatoes",
+            "items": [
+              "Roasted Red Bliss Potato W/ Crumbled Blue Cheese"
+            ]
+          },
+          {
+            "genre_name": "Veggies",
+            "items": [
+              "Collard Greens",
+              "Vegan Spaghetti Squash Roasted"
+            ]
+          },
+          {
+            "genre_name": "Desserts",
+            "items": [
+              "Ny Cheesecake"
+            ]
+          },
+          {
+            "genre_name": "Bakery Misc",
+            "items": [
+              "Cranberry Rasin Loaf"
+            ]
+          },
+          {
+            "genre_name": "Cook To Order Bar",
+            "items": [
+              "Asian Brown Sauce",
+              "Baked Brown Rice",
+              "Beef Strips For Stir Fry",
+              "Diced Tofu",
+              "Fresh Chicken Strips Raw",
+              "Kung Pao Sauce",
+              "Large Broken Pdi Shrimp",
+              "Lo Mein",
+              "Oyster Sauce",
+              "Pasta Vegetable Side",
+              "Soy Bragg",
+              "Steamed White Rice",
+              "Szechuan Sauce"
+            ]
+          }
+        ]
+      },
+      {
+        "meal_name": "Knight Room",
+        "meal_avail": true,
+        "genres": [
+          {
+            "genre_name": "Entrees",
+            "items": [
+              "Chicken Parmesan",
+              "Eggplant Rollatini",
+              "Grilled Chicken Breast 3Oz"
+            ]
+          },
+          {
+            "genre_name": "Knight Room",
+            "items": [
+              "Cucumbers",
+              "Italian Dinner Roll",
+              "Tomato Wedges",
+              "Tossed Salad"
+            ]
+          }
+        ]
+      },
+      {
+        "meal_name": "Late Knight",
+        "meal_avail": false
+      }
+    ]
+  }
+  ```
+
+
 
  
