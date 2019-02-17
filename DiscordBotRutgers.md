@@ -411,8 +411,7 @@ Let's first look at the Rutgers Dining API
             ]
           },
 ]
-...
-]
+
 ```
 
  
