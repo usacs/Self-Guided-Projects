@@ -71,6 +71,25 @@ The Rutgers API Allows us to interact with Data rutgers has such as food and bus
 
 Most APIs Use JSON(Javascript Object Noatation to communciate responses to the user)
 
-Understanding JSON:
+### Understanding JSON:
+JSON is a key value store (basically a python disctionary or a java HashMap<String,Object>). In JSON a Key which is a string points to an object which is the value.
 
+Consdier this exmaple:
+```python
+example = {
+ "apple":"pear",
+ "juice":["orange","pineapple"],
+  "other":{
+    "a":"b",
+    "c":"d"
+  }
+
+}
+```
+In this example , we have "key":value pairs.
+
+So example["apple"] gives us the value "pear", where "apple" is the key and "pear" is the value. Remember, the value can also be any type . example["juice"] gives us the array ["orange","pineapple"]. 
+
+### Check Your Understadning
+What does example["other"] give, how do I access the value "b" or "d"?
  
