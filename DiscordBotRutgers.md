@@ -113,6 +113,9 @@ python3 -m pip install requests #if not using a virtual env
 ```
 ### Making Our First Requests:
 Let's first look at the Rutgers Dining API
+The endpoint is here: https://rumobile.rutgers.edu/1/rutgers-dining.txt
+
+Below is an example snippet of the response
 ```json
 [
   {
@@ -413,5 +416,7 @@ Let's first look at the Rutgers Dining API
 ]
 
 ```
+
+We see that the data is formatted in an odd way, we have a JSON array and each object represents and dining hall. 
 
  
