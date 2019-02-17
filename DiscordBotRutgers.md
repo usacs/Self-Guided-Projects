@@ -108,7 +108,8 @@ POST is Used to Create/Update a resource (logging in)
 These are the main requests we will be dealing with while dealing with APIs for our project.To get started with requests in python, run
 ```python
 pip install requests
-or
-python3 -m pip install requests if not usiing a virtual env
+#or
+python3 -m pip install requests #if not usiing a virtual env
+```
 
  
