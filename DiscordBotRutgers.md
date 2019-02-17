@@ -115,7 +115,7 @@ python3 -m pip install requests #if not using a virtual env
 Let's first look at the Rutgers Dining API
 The endpoint is here: https://rumobile.rutgers.edu/1/rutgers-dining.txt
 
-Below is an example snippet of the response
+Below is an example snippet of the response on Sunday Feb 17 2019
 ```json
 [
   {
