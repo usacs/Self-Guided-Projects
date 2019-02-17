@@ -56,7 +56,7 @@ if it is not run:
 
 run
 
-*pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip\#egg\=discord.py\[voice\]
+```pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip\#egg\=discord.py\[voice\]```
 
 Keep in mind 3.7 still has bugs so if possible downgrade th 3.6, but given this, the example in https://github.com/Rapptz/discord.py should work
 
