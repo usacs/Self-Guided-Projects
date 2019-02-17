@@ -14,10 +14,14 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('!test'):
         counter = 0
-        tmp =client.send_message(message.channel, 'Calculating messages...')
+        tmp = await client.send_message(message.channel, 'Calculating messages...')
+        async for log in client.logs_from(message.channel, limit=100):
+            if log.author == message.author:
+                counter += 1
 
-        client.edit_message(tmp, 'You have {} messages.'.format(counter))
+        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
     elif message.content.startswith('!sleep'):
-         client.send_message(message.channel, 'Done sleeping')
+        await asyncio.sleep(5)
+        await client.send_message(message.channel, 'Done sleeping')
 
 client.run('token')
