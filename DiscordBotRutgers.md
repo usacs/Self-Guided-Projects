@@ -109,7 +109,8 @@ These are the main requests we will be dealing with while dealing with APIs for 
 ```python
 pip install requests
 #or
-python3 -m pip install requests #if not usiing a virtual env
+python3 -m pip install requests #if not using a virtual env
 ```
+
 
  
