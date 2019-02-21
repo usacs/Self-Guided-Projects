@@ -639,7 +639,7 @@ As we can see meals is another JSON array and within that we can access the name
 
 Lets now tie it all together in our discord bot.
 ```python3
-mport discord
+import discord
 import asyncio
 import requests
 
@@ -672,7 +672,7 @@ class MyClient(discord.Client):
                                 for k in j['genres']:
                                     for s in k['items']:
                                         await message.channel.send(s)
-                                       ```
+```
 
 
  
