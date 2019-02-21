@@ -637,5 +637,7 @@ Then, we iterate through the json array and check the top level key "location_na
 
 As we can see meals is another JSON array and within that we can access the name of the meal in a meal_name key. And the actual meals themselves are under the JSON array genres which is also a JSON array and within that an array of items. Crazy eh?
 
-Lets now tie it all together in our discord bot
+Lets now tie it all together in our discord bot.
+
+
  
