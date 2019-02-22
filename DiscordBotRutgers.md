@@ -61,6 +61,11 @@ pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip\#egg\=di
 
 Keep in mind 3.7 still has bugs so if possible downgrade th 3.6, but given this, the example in https://github.com/usacs/GuidedProjects/blob/master/week1.py
 
+Before moving forward, play around with the output 
+
+### Excerise 1:
+Make a simple text based game before moving to the API Stage
+
 ## Getting Started with APIs
 ### What Are Apis?
 APIS (Application Programming Interfaces) are services that companies can allow developers to safely interact with their data without giving direct access to their databases as well as interact with those companies technologies.
@@ -676,3 +681,5 @@ class MyClient(discord.Client):
 
 
 Feel Free to make changes and add on to what we have
+
+### Excerise: Now that we can get all the items for a particular meal, Now get it for a particular genre given a meal
