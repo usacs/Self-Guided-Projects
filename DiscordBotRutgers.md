@@ -682,4 +682,8 @@ class MyClient(discord.Client):
 
 Feel Free to make changes and add on to what we have
 
+Now,to run it.
+On discord type in in !food <dining hall> <meal>
+ so for example !food Brower Lunch
+
 ### Excerise: Now that we can get all the items for a particular meal, Now get it for a particular genre given a meal
