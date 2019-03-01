@@ -52,10 +52,8 @@ if it is not run:
 ```
 python3 -m venv .
 
-source bin/activate
-
-run
-
+source bin/activate #mac or linux
+Scripts\activate.bat #windows
 pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip\#egg\=discord.py\[voice\]
 ```
 
