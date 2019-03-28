@@ -745,7 +745,7 @@ now lets make a get request to the arrival estimates endpoint to get our final d
  import requests
 
 def arrivalTimesRoute(routeName:str):
-    headers = {"X-RapidAPI-Key":"467ce93429msh6bf952e07e1118ep13c6a1jsn8b63b10789ff"}
+    headers = {"X-RapidAPI-Key":"Your API ky"}
     #get a list of agencies
     data = requests.get("https://transloc-api-1-2.p.rapidapi.com/agencies.json",headers=headers)
     parsed_json = data.json()
