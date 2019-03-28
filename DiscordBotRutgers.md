@@ -687,4 +687,64 @@ On discord type in in !food <dining hall> <meal>
 ### Excerise: Now that we can get all the items for a particular meal, Now get it for a particular genre given a meal
 
 ## Week 3: 
+Intergrating with the Rutgers Bus API.
+The Rutgers BUS API requires an API KEY.  Go Here and sign up for a key: https://rapidapi.com/transloc/api/openapi-1-2?endpoint=53aa5969e4b00287471a224d.
+The API Key is Under X-RapidAPI-Key:
+Now we see a bunch of endpoints.
+Which endpoint do we call first? ....
+
+Just by the name we notice that the /agencies endpoint makes the most sense. 
+What kind of of request do we make? 
+
+Since we are retriving data we make a GET request
+so..
+```
+#set request headers
+headers = {"X-RapidAPI-Key":"YOUR API KEY"}
+#get a list of agencies
+data = requests.get("https://transloc-api-1-2.p.rapidapi.com/agencies.json",headers=headers)
+parsed_json = data.json()
+```
+We introduce a new concept called request headers, an HTTP header allow the client and the server to pass additional information with the request or the response. An HTTP header consists of its case-insensitive name followed by a colon ' : ', then by its value (without line breaks)
+
+We now get a JSON array with a bunch of agencies or locations that Transloc supports
+ If you print this json array we notice that the key long_name is of interest. Based on that we can get an agency ID.
+ ### Excercise
+ Observe the JSON array and extract out the JSON array for Rutgers University _programatically_ you are allowed to look at the JSON array for the key names. If you have issues extracting the agency_id for Rutgers, scroll up to the JSON parsing tutorials.
+ 
+Before we get bus times we need to get the route ids for the various routes at rutgers. Note that Transloc might store our bus_ids differently than what we cannocially know them as!
+
+Ok now lets make a request
+```
+ #same headers as before
+ dat = requests.get("https://transloc-api-1-2.p.rapidapi.com/routes.json?agencies=<agency_id>",headers=headers)
+ routes_parsed = data.json()
+```
+Upon printing the json We now notice that under the agency_id key we have a json array we have our routes!
+Inspect the JSON and write code to parse out the route_id given the route name("A,H",etc)
+now lets make a get request to the arrival estimates endpoint to get our final data!
+
+```
+ data = requests.get("https://transloc-api-1-2.p.rapidapi.com/arrival-estimates.json?agencies=<agency_id>&routes=<route_id>",headers=headers)
+ arrival_estimates = data.json()
+ ```
+ Upon insepcting the arrival_estimates json we should have our final data!
+ 
+ we notice that that we get arrival_times for a bunch of stop_ids
+ make a request to the stop endpoint to put it all together
+ 
+ ```python
+ requests.get("https://transloc-api-1-2.p.rapidapi.com/stops.json?callback=call&agencies=<agency_id>",headers=headers")
+ ```
+ parse this stops and put it all togeteher in a function
+ 
+ lets now write a function perform the action so we can it to our discord bot DO NOT LOOK AT THIS UNTIL YOU HAVE TRIED TO FIGURE OUT PARSING THE JSON YOURSELF, REMEMBER SIMPLY COPY PASTING THE CODE IS WASTING TIME
+ 
+ 
+    
+     
+            
+
+```
+
 
