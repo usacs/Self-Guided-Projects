@@ -785,5 +785,21 @@ print(arrivalTimesRoute("Route H"))
             
 
 ```
+We now get a an array of jsons and the key is te stop and the values are an array of times where busses arrive.
+### Excersise
+
+Now, intergate it with discord
+we should be able to do 
+!bus Route H  
+  Response: Allison Road Classrooms: xmin, y min ,zmin
+  ...
+!bus Route C 
+!bus Route REXL
+
+you can look at the time API in python to get the current time and be able to do math to get the arriving in x min
+
+# WOO we are DONE, You can now intergrate with APIS! Feel Free to play around with the commands and add more stuff
+
+
 
 
