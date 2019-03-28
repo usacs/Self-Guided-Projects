@@ -709,7 +709,7 @@ We introduce a new concept called request headers, an HTTP header allow the clie
 
 We now get a JSON array with a bunch of agencies or locations that Transloc supports
  If you print this json array we notice that the key long_name is of interest. Based on that we can get an agency ID.
- ### Excercise
+ #### Excercise
  Observe the JSON array and extract out the JSON array for Rutgers University _programatically_ you are allowed to look at the JSON array for the key names. If you have issues extracting the agency_id for Rutgers, scroll up to the JSON parsing tutorials.
  
 Before we get bus times we need to get the route ids for the various routes at rutgers. Note that Transloc might store our bus_ids differently than what we cannocially know them as!
@@ -741,7 +741,46 @@ now lets make a get request to the arrival estimates endpoint to get our final d
  lets now write a function perform the action so we can it to our discord bot DO NOT LOOK AT THIS UNTIL YOU HAVE TRIED TO FIGURE OUT PARSING THE JSON YOURSELF, REMEMBER SIMPLY COPY PASTING THE CODE IS WASTING TIME
  
  
-    
+```python
+ import requests
+
+def arrivalTimesRoute(routeName:str):
+    headers = {"X-RapidAPI-Key":"467ce93429msh6bf952e07e1118ep13c6a1jsn8b63b10789ff"}
+    #get a list of agencies
+    data = requests.get("https://transloc-api-1-2.p.rapidapi.com/agencies.json",headers=headers)
+    parsed_json = data.json()
+    response_route = []
+    for i in parsed_json['data']:
+        if i['long_name'] == 'Rutgers University':
+            agency_id = i['agency_id']
+            #now get a list of routes
+            routes_json = requests.get("https://transloc-api-1-2.p.rapidapi.com/routes.json?agencies={}".format(agency_id),headers=headers).json()
+            for k in routes_json['data'][str(agency_id)]:
+                if(k['long_name'] == routeName):
+                        route_id = k['route_id']
+                        #make request to arrival times
+                        arrival_estimates = requests.get("https://transloc-api-1-2.p.rapidapi.com/arrival-estimates.json?agencies={}&routes={}".format(agency_id,route_id),headers=headers).json()
+                        stops = requests.get("https://transloc-api-1-2.p.rapidapi.com/stops.json?callback=call&agencies={}".format(agency_id),headers=headers).json()
+                        for j in arrival_estimates['data']:
+                            stop_id = j['stop_id']
+                            stop_id_long_name = ""
+                            for m in stops['data']:
+                                if(m['stop_id'] == stop_id):
+                                    stop_id_long_name = m['name']
+                                    break
+                            times = [e['arrival_at'] for e in  j['arrivals']]
+                            response_route.append({stop_id_long_name:times})
+    return response_route
+
+
+                                
+
+                            
+                            
+                            
+print(arrivalTimesRoute("Route H"))
+                
+
      
             
 
