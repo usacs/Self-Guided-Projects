@@ -22,7 +22,7 @@ The resources required include the following:
  
 First, create a Discord account. It's free to create and use. Upon creating your account, verify with the email address you provided.
  
-Second, to create a Discord bot, click on this **[link](https://www.discordapp.com/developers/applications)**. If this is your first time visiting this page, your applications should look empty. Create a new application by clicking "New Application". You should be directed to a page called "General Information", allowing you to name your bot and give it a description.
+Second, to create a Discord bot, click on this **[link](https://www.discordapp.com/developers/applications)**. If this is your first time visiting this page, your applications should look empty. Create a new application by clicking "New Application". You should be directed to a page called "General Information", allowing you to name your bot and give it a description. Also, there should be a tab to create a bot for your application. Make a new bot a name it whatever you want
  
 Third, we need to invite the Discord bot to a server. For testing purposes, you will need to create a Discord server of your own, so open up Discord (Desktop or Browser doesn't matter). On the left side of the Discord interface, there should be a circle with a plus sign in the center. Click on it and create your own Discord server.
  
