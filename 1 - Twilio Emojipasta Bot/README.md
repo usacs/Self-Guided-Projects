@@ -1,7 +1,7 @@
 # Twilio Emojipasta Bot
 This Python Twilio bot is a fun little way to prank your friends by sending them a seasonally relevant emojipasta every month.
 
-# Who is This For?
+## Who is This For?
 This project is good for any beginner whatsoever. The only real prerequisite for this project is that you understand the bare essentials of computer science (loops, if/else statements, etc.) Everything else you'll learn through the guide.
 
 ## Getting Started
