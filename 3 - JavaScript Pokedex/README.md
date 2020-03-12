@@ -63,7 +63,7 @@ What we're doing is basically creating an HTML page, and adding a `<script>` tag
     "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
     "front_shiny_female": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/female/25.png"
   }
-  ...
+  //...
 }
 ```
 
@@ -107,7 +107,7 @@ While some objects are more simple, others tend to nest a lot more - let's look 
     "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png",
     "front_shiny_female": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/female/25.png"
   }
-  ...
+  //...
 }
 ```
 If you call `body.name` or `body.order`, that returns an int or a string value - but if you call `body.sprites`, that returns another object with a bunch of different key/value pairings for photos of Pikachu. So if we wanted a specific photo of Pikachu, we'd have to do something like this:
@@ -231,7 +231,7 @@ If we give specific elements in our HTML ids, like so:
 ```
 In our JavaScript, we can use the `document.getElementById()` function to get the object representation of that element:
 ```javascript
-// This returns the object representation of the element with the "pokemon-name" id.
+// This returns the object representation of the element with the "pokemon-input" id.
 document.getElementById("pokemon-input")
 ```
 And since this is an object, it has properties, such as `value`, which is a property of input tags that represents what text is typed inside of them:
