@@ -1,0 +1,14 @@
+[package]
+name = "todo-cli"
+version = "0.1.0"
+authors = ["Hari Amoor <amoor.hari@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.106", features = ["derive"] }
+clap = { version = "2.33.0" }
+prettytable-rs = "0.8.0"
+serde_json = "1.0.51"
+simple-error = "0.2.1"
