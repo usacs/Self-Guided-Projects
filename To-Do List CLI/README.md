@@ -3,12 +3,12 @@ Building a Rusty To-Do List CLI
 
 In this 2-week online programming tutorial, we will be building a to-do
 list management CLI in Rust. Each weekly lesson is served as a
-programming guide (see Wiki).
+programming guide.
 
 UPDATE: [Part 1 now available](content/Part-1.md)\
 UPDATE: [Part 2 now available](content/Part-2.md)
 
-It is necessary, and in some cases, recommended, to view the source code paired with this tutorial. It is supplied as reference material and, in some cases, uses advanced Rust techniques (such as Lisp-like ad-hoc macro dialects) to provide more succinct code.
+To best follow the tutorials, look at the markdown write-ups above and the source code under the `src/` directory. The `cli.rs` file is part 1 and the other two files are part 2. The `Cargo.toml` file in this directory will also be mentioned and modified, but you can also take ours as-is for simplicity (we detail how it should be manipulated in our markdown).
 
 One should be able to follow and implement the almost all the code supplied in the tutorial without it. With that said, it is intended as a reference for what idiomatic Rust code should look like.
 
@@ -44,7 +44,10 @@ official website.
 
 This tutorial assumes that the user is setup with Cargo, Rustup, and an
 IDE/editor of his/her choice. Please refer to the Rust website or
-contact the maintainer(s) if any more clarification is necessary.
+contact the maintainer(s) if any more clarification is necessary. Rust
+is very flexible in supporting a variety of general-purpose editors, so
+if you enjoy crafting your tool to fit only your hand, look out for a Rust
+plugin for your editor or IDE.
 
 Tutorial Format
 ---------------
@@ -93,4 +96,6 @@ We provide the following (running) list of Rust resources:
     -   The [Rust subreddit](https://www.reddit.com/r/rust/)
     -   [r4cppp tutorial](https://github.com/nrc/r4cppp) (recommended only
         with sufficient C/C++ background)
-    -   [A Gentle Introduction to Rust](https://stevedonovan.github.io/rust-gentle-intro/)
+    -   [A Gentle Introduction to Rust](https:stevedonovan.github.io/rust-gentle-intro/)
+
+Or, as always, your caring tutorial maintainers.

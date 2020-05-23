@@ -1,6 +1,6 @@
 # Serializing Application State to Disk
 
-Here, in Part 2, we'll proceed to modeling our persistent-state. Here, we develop the app's "backend", which provides an interface for the "frontend" to call upon the core logic.
+In this, our second week, we'll proceed to modeling our persistent-state. Here, we develop the app's "backend", which provides an API of some sort for the "frontend" to interact with to serve the users. [Here's an aside explaining this analogy.](General-Asides.md#aside-3-tiered-architectures "Because, obviously, the best metaphors are explained in lengthy asides.")
 
 ## Strategies for Managing Application State
 
@@ -12,15 +12,13 @@ Instead, we use persistent memory, i.e. in a hard disk. While this is intrinsica
 
 ## Data Representation in Persistent Memory
 
-Writing our to-do list to persistent memory is all well and good, but how exactly do we do that? We generally can't write arbitrarily complex Rust types to disk; only explicit sequences of bytes.
+Writing our to-do list to persistent memory is all well and good, but how exactly do we do that? We generally can't write arbitrarily complex Rust types to disk; only explicit sequences of bytes. And we must have some consistency so that we can also read the memory that we persist.
 
 We apply a paradigm called [serialization](https://en.wikipedia.org/wiki/Serialization) to solve this problem. Serialization is the process of translating data structures and object state represented in a program into a format that can be stored in disk, transmitted across a network connection, and reconstructed later. This practice is widely applied in many different fields of software engineering; it's useful just about anywhere that multiple components of software need to interface with each other, which is to say, everywhere.
 
 Once we know that the user is finished interacting with the to-do list, e.g. when it is scheduled by the Rust compiler to be freed from memory, we can serialize it and write to disk. Similarly, once we know that the user wants to once again interact with the to-do list, we load it from disk and _deserialize_ it back into the original format.
 
-The Rust community provides the [serde-rs](https://serde.rs/) framework, which provides an interface to generically serialize and deserialize Rust data structures. We will extensively use this framework to provide the desired API to our frontend.
-
-For more information on serialization and `serde-rs`, please see the [pertinent aside](Rust-Asides.md).
+The Rust community provides the [serde-rs](https://serde.rs/) framework, which exposes an API to generically serialize and deserialize Rust data structures. In this part of the tutorial, we make extensive use of this framework to provide a simple API to our frontend that manages a user's to-do list and then saves it to disk when s/he doesn't need it anymore. For more on how serde compares with competitors, [see this aside](Rust-Asides.md#aside-serialization "Wherein we just gloat about Rust being cooler than us.").
 
 ## Setting Up
 
@@ -42,13 +40,12 @@ pub enum Instruction {
 ```
 
 <!-- However, we must first ask ourselves; when and why did we assume that each task would be stored as a string? It would indeed be convenient if that's all we needed to store, but what if we wanted to also store a due date at some point in the future? What if we wanted to expand our definition of what a task in our to-do list looks like? -->
-
 We first ask ourselves: why does our identifier _have to_ be a string? Why not a `struct`? Why not an arbitrary type, as long as you can serialize it and print it to the console?
 
 In software, rapidly changing requirements are all too common. In general, we'd like to make code as _generic_ and _extensible_ as possible. Fortunately, Rust is built to support this use case idiomatically. We add a _parametriized generic type_ as follows:
 
 ```rust
-pub enum Instruction<T> 
+pub enum Instruction<T> {
     Add(T),
     Remove(usize),
     Modify(usize, T),
@@ -71,7 +68,7 @@ pub enum Instruction<T> {
 }
 ```
 
-Next, we define a `ToDoList` type, which help us represent the list itself. It will have two fields; a list of tasks, represented as a `Vec` (a heap-allocated array), and the `String`-encoded name of the user.
+Next, we define a `ToDoList` type, which help us represent the list itself. It will have two fields; a list of tasks, represented as a `Vec` (a heap-allocated array, like a Java `ArrayList` or C++ `std::vector`), and the `String`-encoded name of the user.
 
 ```rust
 #[derive(Debug)]
@@ -90,7 +87,7 @@ Since we'll be serializaing and displaying (printing to memory) our generic type
 
 This will be the core logic of the application. We couple two functions, `new` and `run`, with our `ToDoList<T>`. The former will return a new instance of `ToDoList` and the latter will perform the required operation.
 
-`new` is a very simply-defined function:
+`new` is a very simply-defined function (you have to put this in the body of an `impl<T> ToDoList<T> {}`):
 
 ```rust
 pub fn new(name: String) -> ToDoList<T> {
@@ -115,12 +112,16 @@ hamoor's To-Do List:
 +---+-------------+
 ```
 
-Finally, we present the `run` function. We make use of Rust's [pattern-matching syntax](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html) to dynamically destructure our `Instruction` type:
+Note that we index our list starting with 1: how will this affect user input, and how must we adjust accordingly, given that our list is backed by an array-like structure?
+
+Finally, we present the `run` function. Here, we make use of Rust's [pattern-matching syntax](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html) to dynamically destructure our `Instruction` type:
 
 ```rust
 pub fn run(&mut self, inst: Instruction<T>) {
     match inst {
 	Instruction::Add(task) => self.tasks.push(task),
+	// What if we wanted to handle the case where this
+	// user-provided index is out of bounds?
 	Instruction::Modify(i, t) => self.tasks[i - 1] = t,
 	Instruction::Remove(i) => {
 	    self.tasks.remove(i - 1);
@@ -130,6 +131,7 @@ pub fn run(&mut self, inst: Instruction<T>) {
 		let mut table = Table::new();
 		
 		for (i, s) in self.tasks.iter().enumerate() {
+		    // why are we adding one to `i`?
 		    table.add_row(row![(i + 1).to_string(), s]);
 		}
 		
